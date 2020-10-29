@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+ 
+{% block container %}
+    <div class="form-group" >
+       <form method='post' action='/add_video'>
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="theme">Theme</label><br>
+        <input type="text" id="theme" name="theme" required>
+    </div>
+      <button type="submit" class="btn btn-primary" 
+       >add new video</button>
+  <div class="top-pad">
+    {% if not products %}
+    <a>Add a new video, at the time doesn't exist any!!</a>
+    {% else %}
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Theme</th>
+                <th scope="col">Like</th>
+                <th scope="col">Unlike</th>
+              </tr>
+            </thead>
+            {% for i in range(products | length) %}
+            <tbody>
+                <tr>
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{products[i].name}}</td>
+                  <td>{{products[i].theme}}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary" 
+                    onclick="window.location.href='{{ url_for('like', index=i) }}';">Like Video - {{products[i].like}}</button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-primary" 
+                    onclick="window.location.href='{{ url_for('unlike', index=i) }}';">Unlike Video - {{products[i].unlike}}</button>
+                  </td>
+                </tr>
+            </tbody>
+      {% endfor %}
+          </table>
+        </div>
+    {% endif%}
+  </div>
+{% endblock %}

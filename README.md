@@ -1,6 +1,5 @@
 # TEST DEEPER FLASK + MONGO
 
 ```
-run ./entrypoint.sh
-go to: http://127.0.0.1:5000/home
+go to: http://18.220.34.10/home
 ```

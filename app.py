@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["db_deeper"]
-mydb.create_collection('deepers')
+# mydb.create_collection('deepers')
 def get_themes():
     themes_l = []
     for i in mydb.deepers.find({}, {'_id': False}):
